@@ -22,5 +22,10 @@ function createUsers(users) {
     return createUser(user)
   })
 }
-
 // Votre code ici (8 lignes)
+var p1 = getUsers();
+getUsers().then(createUsers).then((users) => {
+  return Promise.all(users)
+}).then(() => {
+  'okkk'
+})
