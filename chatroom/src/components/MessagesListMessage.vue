@@ -1,5 +1,5 @@
 <template>
-   <div class="message">
+   <div  :class="message.user.username==store.user.username ? 'message fromMe': 'message' ">
        <div class="userInfos">
            <img v-if="message.user.avatar" :src="message.user.avatar" class="avatar" :alt="'Avatar de' + message.user.username ">
            <div v-else class="noAvatar"></div>
@@ -11,6 +11,11 @@
 <script>
 import store from '../store';
 export default {
+    data(){
+        return {
+            store
+        }
+    },
     computed: {
         isCurrentUser() {
             return this.message.user.username  === store.$data.user.username;

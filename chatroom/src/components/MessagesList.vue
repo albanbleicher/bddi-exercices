@@ -1,8 +1,6 @@
 <template>
     <div class="messageList">
-        <transition-group name="list" tag="div.message">
        <MessagesListMessage v-for="(message, key) in messages" :key="key" :message="message" />
-       </transition-group>
     </div>
 </template>
 <script>
@@ -11,8 +9,20 @@ export default {
     components:{
         MessagesListMessage
     },
+    mounted() {
+        document.title ="Chatroom";
+        this.scrollToEnd();
+    },
      updated() {
-        this.$nextTick(() => this.scrollToEnd());
+        this.$nextTick(() => {
+             if(document.hidden) {
+                 document.title='New message - Chatroom';
+            setTimeout(function() {
+              document.title='Chatroom'
+            },2000);
+             }
+            this.scrollToEnd()
+        });
     },
      props:{
         messages:{

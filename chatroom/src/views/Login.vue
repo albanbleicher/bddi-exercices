@@ -22,7 +22,8 @@ export default {
         }
     },
     mounted(){
-        console.log(store)
+        console.log(store);
+        document.title='Chatroom - Login'
     } 
 }
 
