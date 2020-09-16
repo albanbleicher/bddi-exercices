@@ -83,6 +83,9 @@ html, body {
         width: 78%;
         height: 100%;
         .messageList {
+            &.loading {
+                opacity: 0;
+            }
             height: calc(100% - 100px);
             overflow-y: scroll;
             display: flex;
@@ -140,6 +143,9 @@ html, body {
                 }
                 p {
                     font-weight: 300;
+                }
+                .gif {
+                    max-height: 200px;
                 }
             }
         }
@@ -300,6 +306,29 @@ html, body {
                
             }
         }
+    }
+}
+.login {
+    .loginForm {
+        height: calc(100% - 120px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding:180px;
+        box-sizing: border-box;
+        input, button {
+            font-size: 6vw;
+            background-color: transparent;
+            border:0;
+            font-family: 'Helvetica Now Display';
+            font-weight: 300;
+            color: white;
+            outline:0
+        }
+        button {
+            margin-top: 70px;
+        }
+
     }
 }
 /* transitions vue */
