@@ -1,6 +1,7 @@
 /* vars */
-$main: #FDF6E4; 
-$alt:#FF5E00;
+$main: #2D2D2D; 
+$alt:white;
+
 /* fonts */
 @font-face {
     font-family: 'Helvetica Now Display';
@@ -37,6 +38,9 @@ $alt:#FF5E00;
     margin:0;
     width: 100%;
     height: 100%;
+    &>div {
+        height: 100%;
+    }
 }
 html, body {
     background-color:$main;
@@ -46,13 +50,14 @@ html, body {
     height: 100%;
     overflow-y: hidden;
     scroll-behavior: smooth;
+    color:$alt;
 }
 .titles {
     height: 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $alt;
     padding: 0 40px;
     width: 100%;
     box-sizing: border-box;
@@ -95,6 +100,7 @@ html, body {
                     padding-right: 12px;
                     border-right: 1px solid $alt;
                     margin-right: 20px;
+                    text-align: right;
                     .userInfos {
                         display: flex;
                         flex-direction: row-reverse;
@@ -112,7 +118,7 @@ html, body {
                     display: flex;
                     align-items: center;
                     strong {
-                        margin-left: 12px;
+                        margin-left: 15px;
                         font-size: 15px;
                     }
                     .avatar {
@@ -129,10 +135,135 @@ html, body {
                         background-color:$alt;
                     }
                 }
+                img {
+                    margin-top: 12px;
+                }
                 p {
                     font-weight: 300;
                 }
             }
+        }
+        .messageBox {
+            border: 1px solid $alt;
+            .messageInput {
+                position: relative;
+                .formActions {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    box-sizing: border-box;
+                    padding:12px;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    button{
+                        box-sizing: border-box;
+                        padding:0;
+                        margin:0;
+                        border:0;
+                        background-color: transparent;
+                        outline: 0;
+                    }
+                }
+                input {
+                    word-break: break-word;
+                    width: 75%;
+                    height: 50px;
+                    height: auto;
+                    box-sizing: border-box;
+                    border:none;
+                    background-color: transparent;
+                    outline: none;
+                    resize: none;
+                    padding:20px;
+                    font-family: 'Helvetica Now Display';
+                    color:$alt;
+                    display: flex;
+                    line-height: 10px;
+                    background-color: transparent;
+                }
+                button {
+                    transition:opacity 0.4s;
+                    cursor: pointer;
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                }
+                .emoji-handle {
+                    margin-right: 12px;
+                }
+                .emoji-picker {
+                    position: absolute;
+                    top: -226px;
+                    right: -1px;
+                    width: 200px;
+                    height: 200px;
+                    overflow-y: scroll;
+                    background-color: $main;
+                    padding:12px;
+                    border:1px solid $alt;
+                    h5 {
+                        width: 100%;
+                    }
+                    .emoji-groups {
+                        width:100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        padding-left: 24px;
+                        box-sizing: border-box;
+                    }
+                    span {
+                        padding:2px;
+                        cursor: pointer;
+                        transition:opacity 0.4s;
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                    }
+                }
+                a {
+                    cursor: pointer;
+                    transition:opacity 0.4s;
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                }
+                .gifFinder {
+                    margin-right: 12px;
+                }
+                .gifModal {
+                    position: absolute;
+                    top: -326px;
+                    right: -1px;
+                    width: 200px;
+                    height: 300px;
+                    overflow-y: scroll;
+                    background-color: $main;
+                    padding:12px;
+                    border:1px solid $alt;
+                    button {
+                        margin-left: 12px;
+                        background-color:$alt;
+                        padding:12px;
+                    }
+                    img {
+                        margin-top: 12px;
+                        max-width: calc(100% - 24px);
+                        height: 100px;
+                        padding:0 12px;
+                    }
+                    .send {
+                        position: absolute;
+                        width: 100%;
+                        background-color: #56c497;
+                        color: white;
+                        bottom: 0;
+                        left: -12px;
+                    }
+                }
+                
+            }
+            
         }
     }
     .right {
@@ -144,7 +275,7 @@ html, body {
             .user {
                 padding: 24px 0;
                 width: 100%;
-                border-bottom: 1px solid black;
+                border-bottom: 1px solid $alt;
                 .userInfos {
                     display: flex;
                     align-items: center;
@@ -183,3 +314,4 @@ html, body {
     opacity: 0;
     transform: translateY(30px);
   }
+  

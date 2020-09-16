@@ -1,4 +1,9 @@
 <template>
+ <div>
+   <div class="titles">
+      <h1>Chatroom</h1>
+      <h1>Team</h1>
+    </div>
   <div class="chatroom">
     <div class="left">
         <MessagesList :messages="store.messages" />
@@ -8,6 +13,7 @@
     <UsersList :users="store.users" />
     </div>
   </div>
+ </div>
 </template>
 <script>
 import MessagesList from '../components/MessagesList'

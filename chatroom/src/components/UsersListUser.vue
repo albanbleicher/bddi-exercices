@@ -1,7 +1,7 @@
 <template>
     <div class="user">
         <div class="userInfos">
-           <img v-if="user.avatar" :src="message.user.avatar" class="avatar" :alt="'Avatar de' + user.username ">
+           <img v-if="user.avatar" :src="user.avatar" class="avatar" :alt="'Avatar de' + user.username ">
            <div v-else class="noAvatar"></div>
            <span>{{user.username}}</span>
        </div>

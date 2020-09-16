@@ -9,7 +9,8 @@ const store = new Vue({
     error:{},
     user: {},
     users: [],
-    messages: []
+    messages: [],
+    iconColor: '#fff'
   },
   methods: {
     registerListeners() {
@@ -47,12 +48,19 @@ const store = new Vue({
         console.log(error)
       })
       socket.on('command new', (data) => {
-        console.log(data)
+        switch(data.command) {
+          case 'logout': 
+            this.logout();
+          break;
+          
+        }
+        
       })
     },
     logout() {
         sessionStorage.clear()
         socket.disconnect();
+        this.isRegistered=false;
         router.push('/login')
     },  
     userRegister(username) {

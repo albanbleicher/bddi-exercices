@@ -5,7 +5,8 @@
            <div v-else class="noAvatar"></div>
            <strong>{{message.user.username}}</strong>
        </div>
-        <p>{{message.text}}</p>
+       <img v-if="isGif" :src="message.text" alt="Ceci est un GIF">
+        <p v-else>{{message.text}}</p>
    </div>
 </template>
 <script>
@@ -19,6 +20,10 @@ export default {
     computed: {
         isCurrentUser() {
             return this.message.user.username  === store.$data.user.username;
+        },
+        isGif(){
+            return this.message.text.search('.gif') !=-1;
+
         }
     },
     props:{
