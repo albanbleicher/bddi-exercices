@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import io from 'socket.io-client';
 import router from './router';
-const socket = io('http://bddi-2019-chat.herokuapp.com/');
+const socket = io('https://bddi-2019-chat.herokuapp.com/');
 
 const store = new Vue({
   data: {
@@ -52,7 +52,7 @@ const store = new Vue({
           case 'logout': 
             this.logout();
           break;
-          
+
         }
         
       })
