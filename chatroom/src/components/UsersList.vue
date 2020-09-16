@@ -1,6 +1,7 @@
 <template>
-    <ul>
+    <ul class="userList">
         <UsersListUser v-for="(user, key) in users" :key="key" :user="user"/>
+
     </ul>
 </template>
 <script>

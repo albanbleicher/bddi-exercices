@@ -1,8 +1,21 @@
 <template>
-    <li>{{message.user.name}} :  {{message.text}}</li>
+   <div class="message">
+       <div class="userInfos">
+           <img v-if="message.user.avatar" :src="message.user.avatar" class="avatar" :alt="'Avatar de' + message.user.username ">
+           <div v-else class="noAvatar"></div>
+           <strong>{{message.user.username}}</strong>
+       </div>
+        <p>{{message.text}}</p>
+   </div>
 </template>
 <script>
+import store from '../store';
 export default {
+    computed: {
+        isCurrentUser() {
+            return this.message.user.username  === store.$data.user.username;
+        }
+    },
     props:{
         message: {
             type:Object,

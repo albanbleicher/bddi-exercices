@@ -1,57 +1,37 @@
 <template>
-    <div>
-        <UsersList :users="users"/>
-        <MessagesList :messages="messages"/>
-        <MessageBox @sendMessage="onSendMessage"/>
+  <div class="chatroom">
+    <div class="left">
+        <MessagesList :messages="store.messages" />
+        <MessageBox @sendMessage="onSendMessage" />
     </div>
+    <div class="right">
+    <UsersList :users="store.users" />
+    </div>
+  </div>
 </template>
 <script>
 import MessagesList from '../components/MessagesList'
 import UsersList from '../components/UsersList'
 import MessageBox from '../components/MessageBox'
+import store from '../store'
 export default {
-    components:{
-        MessageBox,
-        MessagesList,
-        UsersList
-    },
-    data() {
-        return {
-        users: [
-                {name:'Pierre'},
-                {name:'Paul'},
-                {name:'Jacques'},
-                {name:'Henry'}
-            ],
-         messages:[
-                {
-                    user: {name: 'Pierre'},
-                     text: 'Hey'
-                },
-                {
-                    user: {name: 'Paul'},
-                    text:"prout"
-                },
-                {
-                    user: {name: 'Jacques'},
-                    text:"dfgfdg"
-                },
-                {
-                    user: {name: 'Henru'},
-                    text:"dfgdfg"
-                }
-            ]
-        }
-    },
-    methods:{
-        onSendMessage(text){
-            this.messages.push({
-                user:{name:'Alban'},
-                text
-            })
-        }  
+  components: {
+    MessageBox,
+    MessagesList,
+    UsersList,
+  },
+  data() {
+    return {
+      store,
     }
+  },
+  mounted() {
+      console.log(store);
+  },
+  methods: {
+    onSendMessage(text) {
+      store.messageNew(text)
+    },
+  },
 }
-
-
 </script>

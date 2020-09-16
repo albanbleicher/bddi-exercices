@@ -1,14 +1,12 @@
 <template>
   <div id="app">
+    <div class="titles">
+      <h1>Chatroom</h1>
+      <h1>Team</h1>
+    </div>
     <router-view/>
   </div>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-</style>
+<script>
+require( './assets/style/App.scss');
+</script>
