@@ -1,21 +1,14 @@
 <template>
- <div>
+ <div class="wrapper">
    <div class="titles">
       <h1>Chatroom</h1>
       <h1>Team</h1>
     </div>
-  <div class="chatroom">
-    <div class="left">
         <MessagesList :messages="store.messages" />
         <MessageBox @sendMessage="onSendMessage" @typing='onTyping' />
-    <p class="isTyping" v-if='store.areTyping.length !=0'> {{store.areTyping[0]}} is typing</p>
-
-    </div>
-    <div class="right">
     <UsersList :users="store.users" />
-    </div>
+    <div class="isTyping"><span v-if='store.areTyping.length!=0'>{{store.areTyping[0]}} is typing</span></div>
   </div>
- </div>
 </template>
 <script>
 import MessagesList from '../components/MessagesList'

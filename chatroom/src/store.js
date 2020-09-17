@@ -50,6 +50,7 @@ const store = new Vue({
           case 'logout': 
             this.logout();
           break;
+          
         }
       })
       socket.on('user typing', (data) => {

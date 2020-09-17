@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="gifWrapper">
              <a class="gifFinder" @click='showGifFinder ? showGifFinder=false : showGifFinder=true '>
           <svg
             width="23"

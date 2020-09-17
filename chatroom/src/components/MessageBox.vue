@@ -1,6 +1,5 @@
 <template>
   <div class="messageBox">
-
     <div class="messageInput">
       <input v-model="message" @keypress='typing' @keyup="onSubmit" placeholder="Write a message here" />
       <div class="formActions">
