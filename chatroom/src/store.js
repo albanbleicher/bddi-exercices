@@ -10,7 +10,7 @@ const store = new Vue({
     user: {},
     users: [],
     messages: [],
-    iconColor: '#fff',
+    iconColor: '#FF5E00',
     areTyping:[]
   },
   methods: {
@@ -55,11 +55,9 @@ const store = new Vue({
       socket.on('user typing', (data) => {
         if(data.typing == true) {
           this.areTyping.push(data.user.username)
-          console.log(this.areTyping)
         }
         else {
           this.areTyping = this.areTyping.filter(username => username !== data.user.username);
-          console.log(this.areTyping)
         }
       })
     },
