@@ -5,8 +5,9 @@
       <h1>Team</h1>
     </div>
         <MessagesList :messages="store.messages" />
-        <MessageBox @sendMessage="onSendMessage" @typing='onTyping' />
     <UsersList :users="store.users" />
+
+        <MessageBox @sendMessage="onSendMessage" @typing='onTyping' />
     <div class="isTyping"><span v-if='store.areTyping.length!=0'>{{store.areTyping[0]}} is typing</span></div>
   </div>
 </template>

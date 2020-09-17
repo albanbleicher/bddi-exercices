@@ -1,8 +1,8 @@
 <template>
-    <ul class="userList">
+    <div class="userList">
         <UsersListUser v-for="(user, key) in users" :key="key" :user="user"/>
 
-    </ul>
+    </div>
 </template>
 <script>
 import UsersListUser from './UsersListUser';
