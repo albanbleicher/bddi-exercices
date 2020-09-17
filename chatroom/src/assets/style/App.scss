@@ -1,9 +1,10 @@
+/* imports */
+@import './animations.scss';
 /* vars */
 $main: #2D2D2D; 
 $alt:white;
 $border-color: rgba(255,255,255,0.3);
 $orange-color:#FF5E00;
-
 /* fonts */
 @font-face {
     font-family: 'Helvetica Now Display';
@@ -52,6 +53,9 @@ $orange-color:#FF5E00;
     .messageBox { grid-area: 14 / 2 / 15 / 31; }
     .messageList { grid-area: 4 / 2 / 13 / 31; }
     .userList { grid-area: 5 / 32 / 15 / 40; }
+    hr {
+        animation:none;
+    }
 }
 }
 html, body {
@@ -65,18 +69,42 @@ html, body {
     color:$alt;
 }
 .titles {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid $border-color;
-    padding: 0 48px;
+
     width: 100%;
+    text-align: center;
+    hr {
+        width: 100%;
+        border: 0;
+        height: 1px;
+        background-color: $border-color;
+        animation: expand 1s forwards cubic-bezier(1,0,.43,1);
+    }
+    .titles-content {
+        display: grid;
+grid-template-columns: repeat(40, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+overflow-y: hidden;
+
+    }
     box-sizing: border-box;
     h1 {
+        &.animated {
+            animation: slideFromBottom 1s forwards cubic-bezier(1,0,.43,1);
+        }
+
+        &:nth-child(1) {
+            text-align: left;
+            grid-area: 1 / 2 / 2 / 21; }
+        &:nth-child(2) { text-align: right;
+            grid-area: 1 / 21 / 2 / 40; }
         font-size: 6vw;
         font-weight: 300;
         color:$alt;
         margin:0;
+        opacity: 0;
+        transform: translateY(60%);
     }
 }
 .isTyping {
@@ -382,23 +410,37 @@ html, body {
         }
 .login {
     .loginForm {
-        height: calc(100% - 120px);
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding:180px;
+        padding:50px 180px;
         box-sizing: border-box;
-        input, button {
+        input {
             font-size: 6vw;
             background-color: transparent;
             border:0;
             font-family: 'Helvetica Now Display';
             font-weight: 300;
             color: white;
-            outline:0
+            outline:0;
+            opacity: 0;
+            &.animated {
+            animation: fadeIn 1s forwards cubic-bezier(.7,0,0,1);
+            }
         }
         button {
+            font-size: 6vw;
+            background-color: transparent;
+            border:0;
+            font-family: 'Helvetica Now Display';
+            font-weight: 300;
+            color: white;
+            outline:0;
             margin-top: 70px;
+            opacity: 0;
+            &.animated {
+            animation: fadeIn 1s forwards cubic-bezier(.7,0,0,1);
+            }
         }
 
     }

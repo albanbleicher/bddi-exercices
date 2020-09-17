@@ -1,8 +1,11 @@
 <template>
  <div class="wrapper">
    <div class="titles">
-      <h1>Chatroom</h1>
+     <div class="titles-content">
+        <h1>Chatroom</h1>
       <h1>Team</h1>
+     </div>
+      <hr>
     </div>
         <MessagesList :messages="store.messages" />
     <UsersList :users="store.users" />
@@ -28,6 +31,7 @@ export default {
     }
   },
   mounted() {
+        document.querySelectorAll('h1').forEach(item => item.classList.add('animated'))
       console.log(store);
   },
   methods: {

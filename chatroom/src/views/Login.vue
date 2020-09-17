@@ -1,7 +1,10 @@
 <template>
   <div class="login">
     <div class="titles">
-      <h1>Login</h1>
+     <div class="titles-content">
+        <h1>Login</h1>
+     </div>
+      <hr>
     </div>
     <div class="loginForm">
       <form @submit.prevent="onSubmit">
@@ -49,7 +52,20 @@ export default {
   },
   mounted() {
     console.log(store)
-    document.title = 'Chatroom - Login'
+    document.title = 'Chatroom - Login';
+      document.querySelector('hr').addEventListener('animationend', () => {
+        document.querySelectorAll('h1').forEach(item => {
+          item.classList.add('animated')
+          item.addEventListener('animationend', () => {
+            document.querySelector('input').classList.add('animated');
+            document.querySelector('input').addEventListener('animationend', () => {
+              document.querySelector('button').classList.add('animated')
+            });
+          })
+          });
+        
+      })
+      console.log(store);
   },
 }
 </script>
