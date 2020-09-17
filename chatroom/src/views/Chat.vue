@@ -7,7 +7,9 @@
   <div class="chatroom">
     <div class="left">
         <MessagesList :messages="store.messages" />
-        <MessageBox @sendMessage="onSendMessage" />
+        <MessageBox @sendMessage="onSendMessage" @typing='onTyping' />
+    <p class="isTyping" v-if='store.areTyping.length !=0'> {{store.areTyping[0]}} is typing</p>
+
     </div>
     <div class="right">
     <UsersList :users="store.users" />
@@ -38,6 +40,9 @@ export default {
     onSendMessage(text) {
       store.messageNew(text)
     },
+    onTyping(data) {
+      store.userTyping(data)
+    }
   },
 }
 </script>

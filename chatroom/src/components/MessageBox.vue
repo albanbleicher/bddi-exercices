@@ -1,8 +1,10 @@
 <template>
   <div class="messageBox">
+
     <div class="messageInput">
-      <input v-model="message" @keyup="onSubmit" placeholder="Write a message here" />
+      <input v-model="message" @keypress='typing' @keyup="onSubmit" placeholder="Write a message here" />
       <div class="formActions">
+          <FoodNearby v-if='showFoodNearby'/>
         <a class="gifFinder" @click='showGifModal ? showGifModal=false : showGifModal=true '>
           <svg
             width="23"
@@ -85,9 +87,11 @@
 import store from '../store'
 import EmojiPicker from 'vue-emoji-picker'
 import axios from 'axios'
+import FoodNearby from './FoodNearby';
 export default {
   components: {
     EmojiPicker,
+    FoodNearby
   },
   data() {
     return {
@@ -95,6 +99,7 @@ export default {
       store,
       search: '',
       showGifModal: false,
+      showFoodNearby:false,
       gifQuery:'',
       isGifFound:false,
       urlGif:''
@@ -104,7 +109,11 @@ export default {
     insert(emoji) {
       this.message += emoji
     },
+    typing() {
+        this.$emit('typing', {user: store.user, typing:true});
+    },
     onSubmit(e) {
+        this.$emit('typing', {user: store.user, typing:false});
       if ((e.code == 'Enter' && e.shiftKey == false) || e.type === 'click') {
         this.$emit('sendMessage', this.message)
         this.message = ''
@@ -116,7 +125,6 @@ export default {
         'https://api.giphy.com/v1/gifs/random?api_key=k9FDwhZ3TzpSYxgsNQgQyAjBMEPyzmcG&tag='+this.gifQuery+'&rating=g'
       )
       .then((response) => {
-        console.log('GIFS', response.data.data.fixed_height_downsampled_url)
         this.isGifFound=true;
         this.urlGif=response.data.data.fixed_height_downsampled_url;
       })

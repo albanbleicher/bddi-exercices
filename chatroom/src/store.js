@@ -10,7 +10,8 @@ const store = new Vue({
     user: {},
     users: [],
     messages: [],
-    iconColor: '#fff'
+    iconColor: '#fff',
+    areTyping:[]
   },
   methods: {
     registerListeners() {
@@ -18,11 +19,8 @@ const store = new Vue({
         console.log('connected');
         const sessionUser = sessionStorage.getItem('user');
             if(sessionUser) {
-                store.userRegister(JSON.parse(sessionUser).username);
-                
+                store.userRegister(JSON.parse(sessionUser));
             }
-         
-        
       })
       socket.on('disconnect', () => {
         this.isRegistered = false;
@@ -52,24 +50,33 @@ const store = new Vue({
           case 'logout': 
             this.logout();
           break;
-
         }
-        
+      })
+      socket.on('user typing', (data) => {
+        if(data.typing == true) {
+          this.areTyping.push(data.user.username)
+          console.log(this.areTyping)
+        }
+        else {
+          this.areTyping = this.areTyping.filter(username => username !== data.user.username);
+          console.log(this.areTyping)
+        }
       })
     },
     logout() {
         sessionStorage.clear()
         socket.disconnect();
         this.isRegistered=false;
-        router.push('/login')
+        router.push('/')
     },  
-    userRegister(username) {
+    userRegister({username, avatar}) {
       socket.emit('user register', {
-        username: username
+        username: username, 
+        avatar:avatar
       })
     },
-    userTyping() {
-
+    userTyping(data) {
+      socket.emit('user typing', data)
     },
     messageNew(message) {
       socket.emit('message new', message)

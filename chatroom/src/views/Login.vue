@@ -7,10 +7,9 @@
       <form @submit.prevent="onSubmit">
         <p v-if="store.error != {}">{{store.error.message}}</p>
         <input type="text" v-model="username" placeholder="Username" />
-        <input type="text" v-model="avatar" placeholder="Avatar" />
         <button type="submit">
           <svg
-          width='400'
+            width="100"
             height="68"
             viewBox="0 0 100 68"
             fill="none"
@@ -25,7 +24,7 @@
               transform="rotate(-45 61 62.9411)"
               fill="black"
             />
-            <rect y="30.5" width="400" height="7" fill="black" />
+            <rect y="30.5" width="96" height="7" fill="black" />
           </svg>Enter
         </button>
       </form>
@@ -44,8 +43,8 @@ export default {
   },
   methods: {
     onSubmit() {
-      store.userRegister(this.username)
-      this.username = ''
+      store.userRegister({username:this.username, 
+      avatar: ''})
     },
   },
   mounted() {
