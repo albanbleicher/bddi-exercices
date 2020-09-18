@@ -3,8 +3,9 @@
     <div class="messageInput">
       <input v-model="message" @keypress='typing' @keyup="onSubmit" placeholder="Write a message here" />
       <div class="formActions">
+          <FoodNearby/>
+
           <GifFinder @gifSelected='sendGif'/>
-          <FoodNearby v-if='showFoodNearby'/>
 
         <emoji-picker @emoji="insert" :search="search">
           <div
@@ -80,7 +81,6 @@ export default {
       message: '',
       store,
       search: '',
-      showFoodNearby:false,
     }
   },
   methods: {

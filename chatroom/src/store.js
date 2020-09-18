@@ -43,7 +43,6 @@ const store = new Vue({
       })
       socket.on('chat error', (error) => {
         this.error = error;
-        console.log(error)
       })
       socket.on('command new', (data) => {
         switch(data.command) {
@@ -66,9 +65,9 @@ const store = new Vue({
         sessionStorage.clear()
         socket.disconnect();
         this.isRegistered=false;
-        router.push('/')
     },  
     userRegister({username, avatar}) {
+      this.error={}
       socket.emit('user register', {
         username: username, 
         avatar:avatar
@@ -87,7 +86,9 @@ const store = new Vue({
   watch:{
       isRegistered(registered) {
         if(registered) {
-            router.push('/')
+            setTimeout(() =>{
+              router.push('/patience')
+            },1000)
         }
         else {
             router.push('/login')

@@ -53,11 +53,15 @@ $orange-color:#FF5E00;
     .messageBox { grid-area: 14 / 2 / 15 / 31; }
     .messageList { grid-area: 4 / 2 / 13 / 31; }
     .userList { grid-area: 5 / 32 / 15 / 40; }
+    .animated-titles { grid-area: 5 / 2 / 15 / 41; }
     hr {
         animation:none;
     }
 }
 }
+.disapear {
+    animation: fadeOut 1s forwards cubic-bezier(.7,0,0,1);
+    }
 html, body {
     background-color:$main;
     font-family: 'Helvetica Now Display';
@@ -68,12 +72,62 @@ html, body {
     scroll-behavior: smooth;
     color:$alt;
 }
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+.animated-titles {
+    .title-element {
+        font-size: 8.5vw;
+        font-weight: 300;
+        margin:0;
+        height: 20.5vh;
+        overflow-y: hidden;
+        position: relative;
+        .title-value {
+            position: absolute;
+            top: 100%;
+            &.animated {
+                animation: slideTop 1s forwards cubic-bezier(1,0,.43,1);
+            }
+        .underlined {
+            position: relative;
+
+            &.animated {
+                &:after {
+                    position: absolute;
+    
+                    content:'';
+                    animation: expand 1s forwards cubic-bezier(1,0,.43,1);
+                }
+            }
+            &:after {
+                position: absolute;
+
+                content:'';
+                bottom:-6px;
+                height: 3px;
+                left: 0;
+                background-color: $orange-color;
+                width:0%;
+            }
+        }
+        }
+        
+    }
+}
 .titles {
 
     width: 100%;
     text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
     hr {
         width: 100%;
+        margin:0;
         border: 0;
         height: 1px;
         background-color: $border-color;
@@ -85,13 +139,14 @@ grid-template-columns: repeat(40, 1fr);
 grid-template-rows: 1fr;
 grid-column-gap: 0px;
 grid-row-gap: 0px;
+width: 100%;
 overflow-y: hidden;
 
     }
     box-sizing: border-box;
     h1 {
         &.animated {
-            animation: slideFromBottom 1s forwards cubic-bezier(1,0,.43,1);
+            animation: fadeFromBottom 1s forwards cubic-bezier(1,0,.43,1);
         }
 
         &:nth-child(1) {
@@ -99,7 +154,7 @@ overflow-y: hidden;
             grid-area: 1 / 2 / 2 / 21; }
         &:nth-child(2) { text-align: right;
             grid-area: 1 / 21 / 2 / 40; }
-        font-size: 6vw;
+        font-size: 8.5vw;
         font-weight: 300;
         color:$alt;
         margin:0;
@@ -121,6 +176,7 @@ overflow-y: hidden;
         margin: 0;
     }
         .messageList {
+            
             &.loading {
                 opacity: 0;
             }
@@ -285,6 +341,13 @@ overflow-y: hidden;
                 .gifWrapper {
                     max-height: 22px;
                 }
+                .foodWrapper {
+                    svg{
+                        width: 15px !important;
+                    }
+                    max-height: 22px;
+                    margin-right: 12px;
+                }
                 .gifFinder {
                     margin-right: 12px;
                 }
@@ -413,7 +476,7 @@ overflow-y: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding:50px 180px;
+        padding:50px 0 0 180px;
         box-sizing: border-box;
         input {
             font-size: 6vw;
@@ -428,7 +491,7 @@ overflow-y: hidden;
             animation: fadeIn 1s forwards cubic-bezier(.7,0,0,1);
             }
         }
-        button {
+        .button {
             font-size: 6vw;
             background-color: transparent;
             border:0;
@@ -437,9 +500,50 @@ overflow-y: hidden;
             color: white;
             outline:0;
             margin-top: 70px;
-            opacity: 0;
-            &.animated {
-            animation: fadeIn 1s forwards cubic-bezier(.7,0,0,1);
+            display: flex;
+            align-items: center;
+            width: 100%;
+            &.disapear {
+                animation: fadeOut 1s forwards cubic-bezier(.7,0,0,1);
+                }
+            &:hover {
+                color:$orange-color;
+                .arrow {
+                    .arrow-stroke {
+                        width: 200px;
+                    }
+                }
+            }
+            .arrow {
+                opacity: 0;
+                margin-right: 35px;
+                display: flex;
+                width: auto;
+                align-items: center;
+                .arrow-stroke {
+                    width: 100px;
+                    margin-right: -90px;
+                    height: 6px;
+                    background-color: $orange-color;
+                    transition: width 1s cubic-bezier(.7,0,0,1);
+                    &.animated {
+                        animation: expand-arrow 1s forwards cubic-bezier(.7,0,0,1);
+                        }
+                }
+                &.animated {
+                    animation: fadeIn 1s forwards cubic-bezier(.7,0,0,1);
+                    
+                    }
+            }
+            p {
+                width: 0;
+                overflow: hidden;
+                display: inline-block;
+                margin:0;
+                &.animated {
+            animation: fromLeft 1s forwards cubic-bezier(.7,0,0,1);
+
+                }
             }
         }
 
