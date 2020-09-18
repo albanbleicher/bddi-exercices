@@ -46,7 +46,7 @@ const store = new Vue({
       })
       socket.on('command new', (data) => {
         switch(data.command) {
-          case 'logout': 
+          case 'kickall': 
             router.push('/bye')
           break;
           

@@ -70,6 +70,7 @@ import EmojiPicker from 'vue-emoji-picker'
 import axios from 'axios'
 import FoodNearby from './FoodNearby';
 import GifFinder from './GifFinder';
+import router from '../router';
 export default {
   components: {
     EmojiPicker,
@@ -93,8 +94,13 @@ export default {
     onSubmit(e) {
         this.$emit('typing', {user: store.user, typing:false});
       if ((e.code == 'Enter' && e.shiftKey == false) || e.type === 'click') {
-        this.$emit('sendMessage', this.message)
+        if(this.message==='/logout') {
+          router.push('/bye')
+        }
+        else {
+          this.$emit('sendMessage', this.message)
         this.message = ''
+        }
       }
     },
     sendGif(gif) {
