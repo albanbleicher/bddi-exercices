@@ -47,7 +47,7 @@ const store = new Vue({
       socket.on('command new', (data) => {
         switch(data.command) {
           case 'logout': 
-            this.logout();
+            router.push('/bye')
           break;
           
         }
@@ -64,7 +64,8 @@ const store = new Vue({
     logout() {
         sessionStorage.clear()
         socket.disconnect();
-        this.isRegistered=false;
+        store.isRegistered=false;
+        router.push('/')
     },  
     userRegister({username, avatar}) {
       this.error={}
@@ -87,7 +88,7 @@ const store = new Vue({
       isRegistered(registered) {
         if(registered) {
             setTimeout(() =>{
-              router.push('/patience')
+              router.push('/wait')
             },1000)
         }
         else {

@@ -101,6 +101,30 @@ html, body {
                     animation: expandUnderlined 2s forwards cubic-bezier(1,0,.43,1);
                 }
             }
+            
+            &:after {
+                position: absolute;
+
+                content:'';
+                bottom:-6px;
+                height: 3px;
+                left: 0;
+                background-color: $orange-color;
+                width:0%;
+            }
+        }
+        .underlined-bye {
+            position: relative;
+
+            &.animated {
+                &:after {
+                    position: absolute;
+    
+                    content:'';
+                    animation: expand 2s forwards cubic-bezier(1,0,.43,1);
+                }
+            }
+            
             &:after {
                 position: absolute;
 

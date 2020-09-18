@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Chat from '../views/Chat.vue'
-import Patience from '../views/Patience.vue'
+import Wait from '../views/Wait.vue'
+import Bye from '../views/Bye.vue'
 import store from '../store'
 Vue.use(VueRouter)
 
@@ -21,9 +22,17 @@ const routes = [
     }
   },
   {
-    path: '/patience',
-    name: 'Patience',
-    component: Patience,
+    path: '/wait',
+    name: 'Wait',
+    component: Wait,
+    meta: {
+      requiresAuth:true
+    }
+  },
+  {
+    path: '/bye',
+    name: 'Bye',
+    component: Bye,
     meta: {
       requiresAuth:true
     }
