@@ -6,6 +6,14 @@
         width: 100%;
     }
 }
+@keyframes expandUnderlined {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80%;
+    }
+}
 @keyframes fadeFromBottom {
     from {
         opacity: 0;
@@ -49,7 +57,7 @@
         width: 0px;
     }
     to {
-       width: 184.45px;
+       width: 100%;
     }
 
 }

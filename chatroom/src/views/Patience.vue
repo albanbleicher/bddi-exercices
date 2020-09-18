@@ -7,8 +7,8 @@
         <hr>
             </div>
     <div class="animated-titles">
-        <div class=title-element><span class="title-value first">Wait,</span></div>
-        <div class="title-element"><span class="title-value second">It's <span class="underlined">loooooaaading</span>! </span></div>
+        <div class=title-element><span class="title-value first">Please wait,</span></div>
+        <div class="title-element"><span class="title-value second">We are <span class="underlined">crafting</span> it!</span></div>
     </div>
     </div>
     </div>
