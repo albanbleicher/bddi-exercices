@@ -3,7 +3,7 @@
     <div class="messageInput">
       <input v-model="message" @keypress='typing' @keyup="onSubmit" placeholder="Write a message here" />
       <div class="formActions">
-          <FoodNearby/>
+          <FoodNearby @suggest="writeMsg" />
 
           <GifFinder @gifSelected='sendGif'/>
 
@@ -35,7 +35,7 @@
           <div class="emoji-picker" slot="emoji-picker" slot-scope="{ emojis, insert }">
             <div>
               <div>
-                <input type="text" v-model="search" placeholder="search for an emoji" />
+                <input type="text" v-model="search" placeholder="Search for an emoji" />
               </div>
               <div v-for="(emojiGroup, category) in emojis" :key="category" class="emoji-groups">
                 <h5>{{ category }}</h5>
@@ -105,6 +105,9 @@ export default {
     },
     sendGif(gif) {
         this.$emit('sendMessage', gif);
+    },
+    writeMsg(msg) {
+      this.message = msg;
     }
   },
 }

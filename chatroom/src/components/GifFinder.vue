@@ -16,7 +16,7 @@
           </svg>
         </a>
         <div class="gifModal" v-if='showGifFinder'>
-            <input @keyup='findGifs' type="text" v-model='gifQuery' placeholder="search a gif">
+            <input @keyup='findGifs' type="text" v-model='gifQuery' placeholder="Search a gif">
             <div class="gifList" v-if='gifArray.length != 0'>
             <img@click='getGifURL' v-for='(gif, key) in gifArray' :src="gif" alt="Random GIF from Giphy API" :key='key'>
             </div>

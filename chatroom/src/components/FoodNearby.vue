@@ -10,9 +10,10 @@
     </a>
     <div v-if='showFoodModal' class="foodNearbyModal">
     <h2>Food near Gobelins</h2>
+    <small>click to suggest in the chat :)</small>
     <ul>
-      <li class="foodItem" v-for="(place, key) in places" :key="key">
-        <h3>{{place.name}}</h3>
+      <li class="foodItem" v-for="(place, key) in places" :key="key" :id='key'>
+        <h3 @click='preMessage'>{{place.name}}</h3>
         <p>
           <span v-if="place.opening_hours">
             <span v-if="place.opening_hours.open_now">Ouvert</span>
@@ -81,7 +82,13 @@ export default {
   methods:{
     toggleModal(){
       this.showFoodModal ? this.showFoodModal=false: this.showFoodModal=true;
-    } 
+    }, 
+    preMessage(e) {
+      let place = this.places[e.target.parentNode.getAttribute('id')];
+      let message = "Qui veut prendre à manger chez "+place.name+" ? C'est noté "+place.rating+" étoiles sur Google!";
+      this.$emit('suggest',message)
+      console.log(message)
+    }
   }
 }
 </script>

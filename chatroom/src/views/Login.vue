@@ -2,7 +2,7 @@
   <div class="login">
     <div class="titles">
      <div class="titles-content">
-        <h1>Login</h1>
+        <h1>Welcome</h1>
      </div>
       <hr>
     </div>
