@@ -45,7 +45,7 @@ export default {
       store.userRegister({username:this.username, 
       avatar: ''});
         if(this.store.error.message === undefined) {
-        document.querySelector('.arrow-stroke').style.width='1500px';
+        document.querySelector('.arrow-stroke').style.width='100vh';
       setTimeout(()=> {
         document.querySelector('.button').classList.add('disapear');
       },1000)
